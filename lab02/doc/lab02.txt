@@ -1,0 +1,324 @@
+Лабораторна робота №2. Вступ до програмування. Основи debug процессу.
+
+Придворов Сергій Володимирович, гр. КІТ-121в
+
+Завдання: лабораторна спрямована на установку середовища для подальшої роботі з предмету «Програмування».
+
+1. Зареєструвався в системі github та створив там приватний репозиторій.
+
+2. Склонувався зі створеного репозиторія.
+sergey@sergey-VirtualBox:~/Рабочий стол/123$ git clone https://github.com/sergeylls/programing_pridvorov
+Клонирование в «programing_pridvorov»…
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 6 (delta 0), reused 0 (delta 0), pack-reused 0
+Распаковка объектов: 100% (6/6), 1.31 КиБ | 83.00 КиБ/с, готово.
+____________________
+
+sergey@sergey-VirtualBox:~/Рабочий стол/123$ git clone https://github.com/sergeylls/programing_pridvorov
+Клонирование в «programing_pridvorov»…
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 6 (delta 0), reused 0 (delta 0), pack-reused 0
+Распаковка объектов: 100% (6/6), 1.31 КиБ | 1.31 МиБ/с, готово.
+
+3. Скопіювати файли:
+sergey@sergey-VirtualBox:~/Рабочий стол/123$ cp sample_project/.clang-format programing_pridvorov/
+sergey@sergey-VirtualBox:~/Рабочий стол/123$ cp sample_project/.clang-tidy programing_pridvorov/
+sergey@sergey-VirtualBox:~/Рабочий стол/123$ cp sample_project/.gitlab-ci.yml programing_pridvorov/
+sergey@sergey-VirtualBox:~/Рабочий стол/123$ mkdir programing_pridvorov/lab02
+sergey@sergey-VirtualBox:~/Рабочий стол/123$ cp sample_project/lab00/Doxyfile programing_pridvorov/lab02/
+sergey@sergey-VirtualBox:~/Рабочий стол/123$ cp sample_project/lab00/Makefile programing_pridvorov/lab02/
+sergey@sergey-VirtualBox:~/Рабочий стол/123$ cp sample_project/lab00/README.md programing_pridvorov/lab02/
+sergey@sergey-VirtualBox:~/Рабочий стол/123$ cp -r sample_project/lab00/src/ programing_pridvorov/lab02/
+sergey@sergey-VirtualBox:~/Рабочий стол/123$ cp -r sample_project/lab00/test/ programing_pridvorov/lab02/
+sergey@sergey-VirtualBox:~/Рабочий стол/123$ cd programing_pridvorov/
+
+
+4. git commit -m "Initial cope of sample_project"
+На ветке main
+Ваша ветка обновлена в соответствии с «origin/main».
+
+Неотслеживаемые файлы:
+  (используйте «git add <файл>…», чтобы добавить в то, что будет включено в коммит)
+	.clang-format
+	.clang-tidy
+	.gitlab-ci.yml
+	lab02/
+
+ничего не добавлено в коммит, но есть неотслеживаемые файлы (используйте «git add», чтобы отслеживать их)
+ergey@sergey-VirtualBox:~/Рабочий стол/123/programing_pridvorov$ git add .
+sergey@sergey-VirtualBox:~/Рабочий стол/123/programing_pridvorov$ git status
+На ветке main
+Ваша ветка обновлена в соответствии с «origin/main».
+
+Изменения, которые будут включены в коммит:
+  (используйте «git restore --staged <файл>…», чтобы убрать из индекса)
+	новый файл:    .clang-format
+	новый файл:    .clang-tidy
+	новый файл:    .gitlab-ci.yml
+	новый файл:    lab02/Doxyfile
+	новый файл:    lab02/Makefile
+	новый файл:    lab02/README.md
+	новый файл:    lab02/src/lib.c
+	новый файл:    lab02/src/lib.h
+	новый файл:    lab02/src/main.c
+	новый файл:    lab02/test/test.c
+
+sergey@sergey-VirtualBox:~/Рабочий стол/123/programing_pridvorov$ git commit -m "Initial copy of sample_project"
+[main 0f7de26] Initial copy of sample_project
+ 10 files changed, 479 insertions(+)
+ create mode 100644 .clang-format
+ create mode 100644 .clang-tidy
+ create mode 100644 .gitlab-ci.yml
+ create mode 100644 lab02/Doxyfile
+ create mode 100644 lab02/Makefile
+ create mode 100644 lab02/README.md
+ create mode 100644 lab02/src/lib.c
+ create mode 100644 lab02/src/lib.h
+ create mode 100644 lab02/src/main.c
+ create mode 100644 lab02/test/test.c
+
+
+5. Виконати зміни (додати тип «Людина»), зкомпілувати проект та продемонструвати зміни.
+sergey@sergey-VirtualBox:~/Рабочий стол/123/programing_pridvorov/lab02$ vim src/lib.h:
+* Тип тварини
+ */
+enum animal_type {
+        PIG, /**< Свиня */
+        COW, /**< Корова */
+        HUMAN, /**< Людина */
+        DOG, /**< Собака */
+        CAT, /**< Кіт */
+        ANIMAL_TYPE_COUNT /**< Кількість тварин */
+Зкомпілювати:
+sergey@sergey-VirtualBox:~/Рабочий стол/123/programing_pridvorov/lab02$ make clean prep compile
+rm -rf dist
+mkdir dist
+clang -std=gnu11 -g -Wall -Wextra -Werror -Wformat-security -Wfloat-equal -Wshadow -Wconversion -Wlogical-not-parentheses -Wnull-dereference -Wno-unused-variable -Werror=vla -I./src src/lib.c src/main.c -o ./dist/main.bin
+clang -std=gnu11 -g -Wall -Wextra -Werror -Wformat-security -Wfloat-equal -Wshadow -Wconversion -Wlogical-not-parentheses -Wnull-dereference -Wno-unused-variable -Werror=vla -I./src src/lib.c test/test.c  -fprofile-instr-generate -fcoverage-mapping -o ./dist/test.bin -lcheck -lm -lrt -lpthread -lsubunit
+sergey@sergey-VirtualBox:~/Рабочий стол/123/programing_pridvorov/lab02$ ./dist/main.bin 
+Інформація про тварину №01: Людина: зріст = 26 см, маса = 58 гр. 
+Інформація про тварину №02: Людина: зріст = 61 см, маса = 120 гр. 
+Інформація про тварину №03: Людина: зріст = 91 см, маса = 7 гр. 
+Інформація про тварину №04: Свиня: зріст = 59 см, маса = 17 гр. 
+Інформація про тварину №05: Свиня: зріст = 37 см, маса = 24 гр. 
+Інформація про тварину №06: Свиня: зріст = 47 см, маса = 86 гр. 
+Інформація про тварину №07: Кіт: зріст = 120 см, маса = 16 гр. 
+Інформація про тварину №08: Людина: зріст = 79 см, маса = 37 гр. 
+Інформація про тварину №09: Людина: зріст = 61 см, маса = 73 гр. 
+Інформація про тварину №10: Свиня: зріст = 102 см, маса = 30 гр.
+
+
+
+6. . Відкрити в відлагоднику (debugger) lldb ваш виконуючий файл, зупинитися на будь якій строці та визначити значення змінних (variables).
+sergey@sergey-VirtualBox:~/Рабочий стол/123/programing_pridvorov/lab02$ lldb ./dist/main.bin 
+(lldb) target create "./dist/main.bin"
+Current executable set to '/home/sergey/Рабочий стол/123/programing_pridvorov/lab02/dist/main.bin' (x86_64).
+(lldb) l
+   39  	{
+   40  		srand((unsigned int)time(0));
+   41  		struct animal animals[ANIMAL_COUNT];
+   42  	
+   43  		for (unsigned int i = 0; i < ANIMAL_COUNT; i++) {
+   44  			generate_animal(&animals[i]);
+   45  		}
+   46  		show_animals(animals, ANIMAL_COUNT);
+   47  	
+   48  		return 0;
+(lldb) b 40
+Breakpoint 1: where = main.bin`main + 22 at main.c:40:22, address = 0x0000000000401316
+(lldb) run
+Process 4027 launched: '/home/sergey/Рабочий стол/123/programing_pridvorov/lab02/dist/main.bin' (x86_64)
+Process 4027 stopped
+* thread #1, name = 'main.bin', stop reason = breakpoint 1.1
+    frame #0: 0x0000000000401316 main.bin`main at main.c:40:22
+   37  	 */
+   38  	int main()
+   39  	{
+-> 40  		srand((unsigned int)time(0));
+   41  		struct animal animals[ANIMAL_COUNT];
+   42  	
+   43  		for (unsigned int i = 0; i < ANIMAL_COUNT; i++) {
+(lldb) n
+Process 4027 stopped
+* thread #1, name = 'main.bin', stop reason = step over
+    frame #0: 0x0000000000401322 main.bin`main at main.c:43:20
+   40  		srand((unsigned int)time(0));
+   41  		struct animal animals[ANIMAL_COUNT];
+   42  	
+-> 43  		for (unsigned int i = 0; i < ANIMAL_COUNT; i++) {
+   44  			generate_animal(&animals[i]);
+   45  		}
+   46  		show_animals(animals, ANIMAL_COUNT);
+(lldb) s
+Process 4027 stopped
+* thread #1, name = 'main.bin', stop reason = step in
+    frame #0: 0x0000000000401339 main.bin`main at main.c:44:20
+   41  		struct animal animals[ANIMAL_COUNT];
+   42  	
+   43  		for (unsigned int i = 0; i < ANIMAL_COUNT; i++) {
+-> 44  			generate_animal(&animals[i]);
+   45  		}
+   46  		show_animals(animals, ANIMAL_COUNT);
+   47  	
+(lldb) s
+Process 4027 stopped
+* thread #1, name = 'main.bin', stop reason = step in
+    frame #0: 0x000000000040120c main.bin`generate_animal(entity=0x00007fffffffdd10) at lib.c:39:33
+   36  	
+   37  	void generate_animal(struct animal *entity)
+   38  	{
+-> 39  		entity->height = (unsigned int)random() % INT8_MAX;
+   40  		entity->weight = (unsigned int)random() % INT8_MAX;
+   41  		entity->type = (unsigned int)random() % ANIMAL_TYPE_COUNT;
+   42  	}
+(lldb) p *entity
+(animal) $0 = (type = PIG, height = 0, weight = 0)
+(lldb) n
+Process 4027 stopped
+* thread #1, name = 'main.bin', stop reason = step over
+    frame #0: 0x0000000000401221 main.bin`generate_animal(entity=0x00007fffffffdd10) at lib.c:40:33
+   37  	void generate_animal(struct animal *entity)
+   38  	{
+   39  		entity->height = (unsigned int)random() % INT8_MAX;
+-> 40  		entity->weight = (unsigned int)random() % INT8_MAX;
+   41  		entity->type = (unsigned int)random() % ANIMAL_TYPE_COUNT;
+   42  	}
+   43  	
+(lldb) n
+Process 4027 stopped
+* thread #1, name = 'main.bin', stop reason = step over
+    frame #0: 0x0000000000401236 main.bin`generate_animal(entity=0x00007fffffffdd10) at lib.c:41:31
+   38  	{
+   39  		entity->height = (unsigned int)random() % INT8_MAX;
+   40  		entity->weight = (unsigned int)random() % INT8_MAX;
+-> 41  		entity->type = (unsigned int)random() % ANIMAL_TYPE_COUNT;
+   42  	}
+   43  	
+   44  	void show_animals(struct animal animals[], unsigned int count)
+(lldb) p *en
+Available completions:
+	*entity -- animal *&
+	*enum  
+(lldb) p *entity
+(animal) $1 = (type = PIG, height = 28, weight = 28)
+(lldb) finish
+Process 4027 stopped
+* thread #1, name = 'main.bin', stop reason = step out
+
+    frame #0: 0x0000000000401357 main.bin`main at main.c:43:46
+   40  		srand((unsigned int)time(0));
+   41  		struct animal animals[ANIMAL_COUNT];
+   42  	
+-> 43  		for (unsigned int i = 0; i < ANIMAL_COUNT; i++) {
+   44  			generate_animal(&animals[i]);
+   45  		}
+   46  		show_animals(animals, ANIMAL_COUNT);
+(lldb) b 46
+Breakpoint 2: where = main.bin`main + 111 at main.c:46:2, address = 0x000000000040136f
+(lldb) continue
+Process 4027 resuming
+Process 4027 stopped
+* thread #1, name = 'main.bin', stop reason = breakpoint 2.1
+    frame #0: 0x000000000040136f main.bin`main at main.c:46:2
+   43  		for (unsigned int i = 0; i < ANIMAL_COUNT; i++) {
+   44  			generate_animal(&animals[i]);
+   45  		}
+-> 46  		show_animals(animals, ANIMAL_COUNT);
+   47  	
+   48  		return 0;
+   49  	}
+(lldb) p animals
+(animal [10]) $2 = {
+  [0] = (type = DOG, height = 28, weight = 28)
+  [1] = (type = PIG, height = 70, weight = 32)
+  [2] = (type = PIG, height = 39, weight = 70)
+  [3] = (type = COW, height = 27, weight = 1)
+  [4] = (type = DOG, height = 24, weight = 110)
+  [5] = (type = COW, height = 10, weight = 76)
+  [6] = (type = HUMAN, height = 44, weight = 113)
+  [7] = (type = CAT, height = 61, weight = 44)
+  [8] = (type = COW, height = 60, weight = 105)
+  [9] = (type = DOG, height = 63, weight = 124)
+}
+(lldb) n
+Інформація про тварину №01: Собака: зріст = 28 см, маса = 28 гр. 
+Інформація про тварину №02: Свиня: зріст = 70 см, маса = 32 гр. 
+Інформація про тварину №03: Свиня: зріст = 39 см, маса = 70 гр. 
+Інформація про тварину №04: Корова: зріст = 27 см, маса = 1 гр. 
+Інформація про тварину №05: Собака: зріст = 24 см, маса = 110 гр. 
+Інформація про тварину №06: Корова: зріст = 10 см, маса = 76 гр. 
+Інформація про тварину №07: Людина: зріст = 44 см, маса = 113 гр. 
+Інформація про тварину №08: Кіт: зріст = 61 см, маса = 44 гр. 
+Інформація про тварину №09: Корова: зріст = 60 см, маса = 105 гр. 
+Інформація про тварину №10: Собака: зріст = 63 см, маса = 124 гр. 
+Process 4027 stopped
+* thread #1, name = 'main.bin', stop reason = step over
+    frame #0: 0x000000000040137b main.bin`main at main.c:48:2
+   45  		}
+   46  		show_animals(animals, ANIMAL_COUNT);
+   47  	
+-> 48  		return 0;
+   49  	}
+(lldb) q
+Quitting LLDB will kill one or more processes. Do you really want to proceed: [Y/n] Y
+sergey@sergey-VirtualBox:~/Рабочий стол/123/programing_pridvorov/lab02$ lldb ./dist/main.bin 
+(lldb) target create "./dist/main.bin"
+Current executable set to '/home/sergey/Рабочий стол/123/programing_pridvorov/lab02/dist/main.bin' (x86_64).
+(lldb) l 1
+   1   	/**
+   2   	 * @mainpage
+   3   	 * # Загальне завдання
+   4   	 * 1. **Сформувати** функцию, що генерирує структуру із залученням механізму
+   5   	 * випадкової генерації даних (прикладная галузь вказана в індивідуальному
+   6   	 * завданні);
+   7   	 *
+   8   	 * 2. **Сформувати** функцію, яка буде виводити масив структур на екран
+   9   	 *
+   10  	 * @author Davydov V.
+(lldb) l
+   11  	 * @date 14-apr-2020
+   12  	 * @version 1.3
+   13  	 */
+   14  	
+   15  	/**
+   16  	 * @file main.c
+   17  	 * @brief Файл з демонстрацією роботи структури {@link animal} та методів
+   18  	 * оперування ним.
+   19  	 *
+   20  	 * @author Davydov V.
+(lldb) b main
+Breakpoint 1: where = main.bin`main + 22 at main.c:40:22, address = 0x0000000000401316
+(lldb) q
+
+
+7. Зафіксувати зміни за допомогою команди git commit:
+sergey@sergey-VirtualBox:~/Рабочий стол/123/programing_pridvorov/lab02$ nano .gitignore
+sergey@sergey-VirtualBox:~/Рабочий стол/123/programing_pridvorov/lab02$ git add .
+sergey@sergey-VirtualBox:~/Рабочий стол/123/programing_pridvorov/lab02$ git status
+На ветке main
+Ваша ветка опережает «origin/main» на 1 коммит.
+  (используйте «git push», чтобы опубликовать ваши локальные коммиты)
+
+Изменения, которые будут включены в коммит:
+  (используйте «git restore --staged <файл>…», чтобы убрать из индекса)
+	новый файл:    .gitignore
+	изменено:      src/lib.c
+	изменено:      src/lib.h
+sergey@sergey-VirtualBox:~/Рабочий стол/123/programing_pridvorov$ git commit -m "Добавление нового типа - Человек"
+[main 1ad8026] Добавление нового типа - Человек
+ 3 files changed, 5 insertions(+)
+ create mode 100644 lab02/.gitignore
+
+ 8. Додати звіт лабораторної работи 1 та 2, зафіксувати зміни.
+ergey@sergey-VirtualBox:~/Рабочий стол/123/programing_pridvorov$ nano lab01/doc/lab01.txt 
+sergey@sergey-VirtualBox:~/Рабочий стол/123/programing_pridvorov$ git add .
+sergey@sergey-VirtualBox:~/Рабочий стол/123/programing_pridvorov$ git commit -m "Added lab01"
+[main 47918f5] Added lab01
+ 1 file changed, 134 insertions(+)
+ create mode 100644 lab01/doc/lab01.txt
+ 
+!так само і другої!
