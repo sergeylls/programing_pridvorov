@@ -1,0 +1,134 @@
+Лабораторна робота №1. Вступ до програмування. Освоєння командної строки Linux.
+
+Придворов Сергій Володимирович, гр. КІТ-121в
+
+Ціль роботи: Освоєння командної строки Linux
+Хід роботи:
+1.	Знайшов, завантажив та інсталював додаток VirtualBox, за допомогою якого можна встановити віртуальну операційну систему Linux Ubuntu.
+2.	Знайшов, завантажив та встановив образ Linux системи на VirtualBox для подальшої роботи.
+3.	Інсталював мінімально-необхідні пакети (програмні додатки): git, gcc, clang, clang-format, clang-tidy, tree, make, cppcheck за допомогою команди sudo apt install (назва додатку).
+4.	За допомогою системи контролю версіями git та команди git clone виконав клонування репозиторія, що знаходиться на сайті github: 
+git clone https://github.com/davydov-vyacheslav/sample_project
+
+5.	 Ознайомився з утілітою tree.
+├── lab00
+│   ├── dist
+│   │   └── main.bin
+│   ├── doc
+│   │   ├── assets
+│   │   │   ├── algorithm-generateAnimal.png
+│   │   │   ├── algorithm-main.png
+│   │   │   ├── algorithm-showAnimals.png
+│   │   │   ├── animal-fields.png
+│   │   │   └── lab00.drawio
+│   │   ├── lab00.docx
+│   │   ├── lab00.md
+│   │   └── lab00.pdf
+│   ├── Doxyfile
+│   ├── Makefile
+│   ├── README.md
+│   ├── src
+│   │   ├── lib.c
+│   │   ├── lib.c.dump
+│   │   ├── lib.h
+│   │   ├── main.c
+│   │   └── main.c.dump
+│   └── test
+│       ├── test.c
+│       └── test.c.dump
+├── lab03-sample
+│   └── doc
+│       └── lab03.txt
+└── README.md
+6.	Зібрав проект (зкомпілював) за допомогою команди make clean prep compile check.
+rm -rf dist
+mkdir dist
+clang -std=gnu11 -g -Wall -Wextra -Werror -Wformat-security -Wfloat-equal -Wshadow -Wconversion -Wlogical-not-parentheses -Wnull-dereference -Wno-unused-variable -Werror=vla -I./src src/lib.c src/main.c -o ./dist/main.bin
+clang-format --verbose -dry-run --Werror src/* test/*
+Formatting src/lib.c
+Formatting src/lib.c.dump
+Formatting src/lib.h
+Formatting src/main.c
+Formatting src/main.c.dump
+Formatting test/test.c
+Formatting test/test.c.dump
+cppcheck --enable=all --inconclusive --addon=cert --error-exitcode=1  -v --suppress=unreadVariable:/main.c --suppress=knownConditionTrueFalse:/main.c --suppress=missingIncludeSystem  --check-config --suppress=:/test.c  --suppress=unmatchedSuppression:*/main.c .
+Checking src/lib.c ...
+Defines:
+Undefines:
+Includes:
+Platform:Native
+1/3 files checked 17% done
+Checking src/main.c ...
+Defines:
+Undefines:
+Includes:
+Platform:Native
+2/3 files checked 41% done
+Checking test/test.c ...
+Defines:
+Undefines:
+Includes:
+Platform:Native
+3/3 files checked 100% done
+7.	Виконав зміну в файлі lib.c за допомогою команди nano:
+Змінив «корова» на «бик».
+
+8.	Знов зкомпілював проект за допомогою команди make clean prep compile check та переконався,що немає помилок.
+
+9.	Виконав зміни в Makefile: 
+ • додав ціль all, яка буде виконувати цілі clean prep compile check;
+ • перевірив роботу Makefile, шляхом виконання команди make all;
+ • виконав зміни у Makefile таким чином, щоб файл test.bin не створювався та перевірив роботу виконаних змін;
+
+
+rm -rf dist
+mkdir dist
+clang -std=gnu11 -g -Wall -Wextra -Werror -Wformat-security -Wfloat-equal -Wshadow -Wconversion -Wlogical-not-parentheses -Wnull-dereference -Wno-unused-variable -Werror=vla -I./src src/lib.c src/main.c -o ./dist/main.bin
+clang-format --verbose -dry-run --Werror src/* test/*
+Formatting src/lib.c
+Formatting src/lib.c.dump
+Formatting src/lib.h
+Formatting src/main.c
+Formatting src/main.c.dump
+Formatting test/test.c
+Formatting test/test.c.dump
+cppcheck --enable=all --inconclusive --addon=cert --error-exitcode=1  -v --suppress=unreadVariable:/main.c --suppress=knownConditionTrueFalse:/main.c --suppress=missingIncludeSystem  --check-config --suppress=:/test.c  --suppress=unmatchedSuppression:*/main.c .
+Checking src/lib.c ...
+Defines:
+Undefines:
+Includes:
+Platform:Native
+1/3 files checked 17% done
+Checking src/main.c ...
+Defines:
+Undefines:
+Includes:
+Platform:Native
+2/3 files checked 41% done
+Checking test/test.c ...
+Defines:
+Undefines:
+Includes:
+Platform:Native
+3/3 files checked 100% done
+10.	Визначив поточну версію утиліти clang та makе: 
+Clang --version та make –version
+Ubuntu clang version 12.0.0-3ubuntu1~21.04.1
+Target: x86_64-pc-linux-gnu
+Thread model: posix
+InstalledDir: /usr/bin
+GNU Make 4.3
+Эта программа собрана для x86_64-pc-linux-gnu
+Copyright (C) 1988-2020 Free Software Foundation, Inc.
+Лицензия GPLv3+: GNU GPL версии 3 или новее http://gnu.org/licenses/gpl.html
+Это свободное программное обеспечение: вы можете свободно изменять его и
+распространять. НЕТ НИКАКИХ ГАРАНТИЙ вне пределов, допустимых законом.
+
+
+
+11.	Дослідити роботу утиліти man та описати її призначення:
+man - це команда для довідкових сторінок системи. Кожен параметр сторінка, переданий man, зазвичай є назвою програми, утиліти або функції. По кожному з цих параметрів виконується пошук і висновок пов'язаної з ним довідкової сторінки. Якщо вказано параметр розділ, то це змушує man виконувати пошук тільки в цьому довідковому розділі. Дією за замовчуванням є пошук у всіх доступних розділах в заздалегідь певному порядку.
+
+Висновок:
+Під час виконання лабораторної роботи я навчився мінімальній роботі з терміналом та налаштував Linux під цю роботу. Ознайомився з різними утілітами і тим як вносити зміни у проект. 
