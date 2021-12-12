@@ -6,17 +6,18 @@ int main()
  double V = 0;
  double pi = 3.14;
  int y = -1;
+ double n = 0;
  switch (k) {
  case 1:
-   S = pi * r * r;
+   n = S = pi * r * r;
    break;
  case 2:
-   V = (4 * pi * r * r * r)/3;
+   n = V = (4 * pi * r * r * r)/3;
    break;
  default:
-  y = -1;
+  n = y = -1;
   break;
-
+  
   return 0;
 }
 
