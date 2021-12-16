@@ -7,6 +7,8 @@ clean:
 	rm -rf dist
 prep:
 	mkdir dist
+doxygen:
+	mkdir dist/html
 compile: main.bin
 
 main.bin: src/main.c
@@ -16,4 +18,5 @@ run: clean prep compile
 leak-check: clean prep compile
 	valgrind $(V_FLAGS) --log-file=dist/valgrind.log --xml-file=dist/valgrind.xml --xml=yes dist/main.bin
 	valgrind $(V_FLAGS) --log-file=dist/valgrind.log --xml-file=dist/valgrind.xml --xml=yes dist/test.bin
-all: clean prep compile
+
+all: clean prep doxygen compile
