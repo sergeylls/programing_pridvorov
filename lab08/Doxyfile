@@ -1,8 +1,7 @@
 ## Common Project info
-PROJECT_NAME = " Лабораторна робота 8"
+PROJECT_NAME = "Лабораторна работа №8"
 PROJECT_BRIEF = "Вступ до документації коду"
-PROJECT_NUMBER = 8
-PROJECT_BRIEF = README.md;
+PROJECT_NUMBER = 1
 
 ## output options
 OUTPUT_DIRECTORY = ./dist
@@ -13,7 +12,7 @@ DOXYFILE_ENCODING = UTF-8
 INPUT_ENCODING = UTF-8
 RECURSIVE = YES
 FILE_PATTERNS = *.c *.h *.md
-EXCLUDE_PATTERNS = *src/*.c
+EXCLUDE_PATTERNS = *dist/* */test/*.c
 ###########
 #USE_MDFILE_AS_MAINPAGE = README.md
 ###########
