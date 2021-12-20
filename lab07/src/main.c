@@ -35,16 +35,24 @@ int array();
  * {@resc}
  * @return успішний код повернення з програми (0)
  */
-int main()
+int main(int argc, char *argv[])
 {
+	int n = 0;
+	argc = 0;
 	int arr1[a][a];
 	int arr2[a * a];
 	int c = 0;
+	if (argc!=0)
+        {
+        n = atoi(argv[1]);
+        }
+	else {
+}
 	for (int i = 0; i < a; i++)
 	{
 		for (int j = 0; j < a; j++)
 		{
-			arr1[i][j] = i + 2 * j;
+			arr1[i][j] = rand()%100;
 		}
 	}
 	for (int i = 0; i < a; i++)
@@ -57,7 +65,7 @@ int main()
 	}
 	array(arr2);
 
-	int resc = cicle(rand() % 100);
+	int resc = cicle(n);
 
 	if (resc == 1)
 	{

@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Лабораторна работа №8: Лабораторна робота № 8. Вступ до документації коду</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Лабораторна работа №8
+   &#160;<span id="projectnumber">1</span>
+   </div>
+   <div id="projectbrief">Вступ до документації коду</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Створено системою Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Пошук');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Пошук');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Лабораторна робота № 8. Вступ до документації коду </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><h2>1 Вимоги</h2>
+<h3>1.1 Розробник</h3>
+<ul>
+<li>Придворов Сергій Володимирович;</li>
+<li>студент групи КІТ-121в;</li>
+<li>11-грудня-2021.</li>
+</ul>
+<h3>1.2 Індивідуальне завдання</h3>
+<p>Переробити програми, що були розроблені під час виконання лабораторних робіт з тем “Масиви” та “Цикли” таким чином, щоб використовувалися функції для обчислення результату.</p>
+<h2>2 Опис програми</h2>
+<h3>2.1 Функціональне призначення</h3>
+<p>Програма призначена для генерування результату лабораторних робіт з тем “Масиви” та “Цикли” за допомогою функцій.</p>
+<h3>2.2 Опис логічної структури</h3>
+<ul>
+<li>Створюємо змінну <code>int resc = cicle(rand() % 100);</code>, яка передає у функцію з простим числом змінну за допомогою функції rand.</li>
+<li>Створюємо масив <code>int arr1[a][a];</code> та заповнюємо його значеннями які передаються у функцію.</li>
+</ul>
+<p>Опис розроблених структур і функцій наводиться на базі результатів роботи системи автодокументування <em>Doxygen</em>.</p>
+<h4>Функція визначення чи є число простим</h4>
+<div class="fragment"><div class="line">int cicle(n)</div></div><!-- fragment --><p> <em>Призначення</em>: визначення є число простим.</p>
+<p><em>Опис роботи</em>: за допомогою цикла функція визначає на яке число ділиться задане число без остачі, якщо остача є, то програма присвоює потрібне значення та зупинється. Якщо число просте, то присвоюється 1, якщо ні - 0.</p>
+<p><b>Аргументи</b>:</p><ul>
+<li><em>b</em> - результат який визначає яким є задане число, якщо b = 0, то число не просте, якщо b = 1, - то просте.</li>
+<li><em>n</em> - задане число.</li>
+</ul>
+<h4>Функція множення матрицi на себе.</h4>
+<div class="fragment"><div class="line">int array(int arr3[])</div></div><!-- fragment --><p><em>Призначення</em>: множення матрицi на себе вiдповiдно до правил множення матриць.</p>
+<p><em>Опис роботи</em>: функція приймає заповнену одновимірну матрицю, перетворює її в двовимiрну та вiдповiдно до правил множення матриць множить її на себе.</p>
+<p><b>Аргументи</b>:</p><ul>
+<li><em>arr3[v]</em> - вхiдний масив.</li>
+<li><em>arr4[a][a]</em> - двовимiрний масив, який бере даннi у <em>arr3[v]</em>.</li>
+<li><em>int arr5[a][a]</em> - двовимiрний масив, який має значення множення матрицi.</li>
+</ul>
+<h4>Основна функція</h4>
+<div class="fragment"><div class="line">int main() </div></div><!-- fragment --><p><em>Призначення</em>: головна функція.</p>
+<p><em>Опис роботи</em>:</p>
+<ul>
+<li>створення масиву та його заповнення;</li>
+<li>генерація числа для функцiї перевірки чи є число простим;</li>
+<li>вивід даних;</li>
+<li>повертає функція код повернення з програми (0).</li>
+</ul>
+<h4>Структура проекту</h4>
+<div class="fragment"><div class="line">└── lab00</div><div class="line">    ├── Doxyfile</div><div class="line">    ├── Makefile</div><div class="line">    ├── README.md</div><div class="line">    ├── doc</div><div class="line">    │   ├── lab08.md</div><div class="line">    │   ├── lab08.docx</div><div class="line">    │   └── lab08.pdf</div><div class="line">    └── src</div><div class="line">         └── main.c</div></div><!-- fragment --><h3>2.3 Важливі фрагменти програми</h3>
+<h4>Перетворення двовимiрного масиву в одновимiрний.</h4>
+<div class="fragment"><div class="line">    for (int i = 0; i &lt; a; i++)</div><div class="line">{</div><div class="line">    for (int j = 0; j &lt; a; j++)</div><div class="line">    {</div><div class="line">        arr2[c] = arr1[i][j];</div><div class="line">        c++;</div><div class="line">    }</div><div class="line">}</div></div><!-- fragment --><h4>Перетворення одновимiрного масиву в двовимiрний.</h4>
+<div class="fragment"><div class="line">for (int i = 0; i &lt; a; i++)</div><div class="line">{</div><div class="line">    for (int j = 0; j &lt; a; j++)</div><div class="line">    {</div><div class="line">        arr4[i][j] = arr3[v];</div><div class="line">        v++;</div><div class="line">    }</div><div class="line">}</div></div><!-- fragment --><h4>Множення матрицi на себе.</h4>
+<div class="fragment"><div class="line">}</div><div class="line">for (int i = 0; i &lt; a; i++)</div><div class="line">{</div><div class="line">    for (int j = 0; j &lt; a; j++)</div><div class="line">    {</div><div class="line">        arr5[i][j] = 0;</div><div class="line">        for (int k = 0; k &lt; a; k++)</div><div class="line">        {</div><div class="line">            arr5[i][j] += arr4[i][k] * arr4[k][j];</div><div class="line">        }</div><div class="line">    }</div><div class="line">}</div></div><!-- fragment --><h4>Визначення чи є число простим.</h4>
+<div class="fragment"><div class="line">for (int i = n - 1; i &gt; 1; i--)</div><div class="line">{</div><div class="line">    if (n % i != 0)</div><div class="line">    {</div><div class="line">        b = 1; //простое</div><div class="line">    }</div><div class="line">    if (n % i == 0)</div><div class="line">    {</div><div class="line">        b = 0; //не простое</div><div class="line">        break;</div><div class="line">    }</div><div class="line">}</div></div><!-- fragment --><h2>3 Варіанти використання</h2>
+<p>Для демонстрації результатів кожної задачі використовується:</p>
+<ul>
+<li>покрокове виконання програми в утиліті lldb;</li>
+<li>видача результатів у консоль за допомогою функції виводу.</li>
+</ul>
+<p><b>Варіант використання 1</b>: послідовність дій для запуску програми у режимі відлагодження:</p>
+<ul>
+<li>запустити програму у відлагоднику lldb;</li>
+<li>поставити точку зупинки на функції main (строка з <code>return 0;</code>);</li>
+<li>запустити програму;</li>
+<li>подивитись результати виконання програми, оглядаючи значення зазначенних змiнних.</li>
+</ul>
+<div class="fragment"><div class="line">(lldb) run</div><div class="line">Process 8143 launched: &#39;/home/sergey/Рабочий стол/123/programing_pridvorov/lab08/dist/main.bin&#39; (x86_64)</div><div class="line">  10  22  34</div><div class="line">  13  31  49</div><div class="line">  16  40  64</div><div class="line"></div><div class="line">(lldb) p b</div><div class="line">(int) $0 = 1</div></div><!-- fragment --><p><b>Варіант використання 2</b>: видача згенерованих студентів з використанням вікна консолі.</p>
+<div class="fragment"><div class="line">sergey@sergey-VirtualBox:~/Рабочий стол/123/programing_pridvorov/lab08$ make run</div><div class="line">rm -rf dist</div><div class="line">mkdir dist</div><div class="line">clang -std=gnu11 -g -Wall -Wextra -Werror -Wformat-security -Wfloat-equal -Wshadow -Wconversion -Wlogical-not-parentheses -Wnull-dereference -Wno-unused-variable -Werror=vla  src/main.c -o ./dist/main.bin</div><div class="line">./dist/main.bin</div><div class="line">  10  22  34</div><div class="line">  13  31  49</div><div class="line">  16  40  64</div><div class="line">Число простое!</div><div class="line">sergey@sergey-V</div></div><!-- fragment --><h2>Висновки</h2>
+<p>При виконанні даної лабораторної роботи було набуто практичного досвіду роботи із функцiями та документацiєю. </p>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Створено системою &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>
